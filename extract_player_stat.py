@@ -1,6 +1,7 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+from urllib.request import Request, urlopen
 # all data are extracted from https://2kmtcentral.com
 
 # open a list and a dataframe for storage
@@ -12,9 +13,12 @@ num = 0
 while True:
     website = 'https://2kmtcentral.com/21/players/page/' + str(num)
     # read player data using pandas
-    df = pd.read_html(website)
+    req = Request(website, headers={'User-Agent': 'Mozilla/5.0'})
+    content = urlopen(req)
+    df = pd.read_html(content)
     df = df[0]
     playerlist = playerlist.append(df, ignore_index=True)
+
 
     # set the end of the loop
     if len(df) == 0:
