@@ -11,7 +11,7 @@ root = Tk()
 root.title('2K21 Prediction')
 
 def test(*entry):
-    df = pd.read_csv(r'C:\Users\samue\PycharmProjects\2kmt\playerdata(simplified).csv')
+    df = pd.read_csv(r'playerdata.csv')
     POS, INS, OUT, PLY = entry[0], int(entry[1]), int(entry[2]), int(entry[3])
     ATH, DEF, REB = int(entry[4]), int(entry[5]), int(entry[6])
 
